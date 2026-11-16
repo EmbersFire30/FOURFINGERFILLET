@@ -1,0 +1,52 @@
+{
+    "version": 1,
+    "name": "Block Move",
+    "maps": [
+        {
+            "name": "TetrisMap",
+            "id": "22a049ac-1143-43c8-9020-b4d136227dd6",
+            "actions": [
+                {
+                    "name": "Move Up",
+                    "type": "Value",
+                    "id": "70658626-884c-43fa-b22e-c93ebe5b17c7",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f2cf0072-59c9-4af4-9e92-95b192247260",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";PlayerScheme",
+                    "action": "Move Up",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "30a43d40-a444-470d-98ad-6bc39e5e1617",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";PlayerScheme",
+                    "action": "Move Up",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "PlayerScheme",
+            "bindingGroup": "PlayerScheme",
+            "devices": []
+        }
+    ]
+}
