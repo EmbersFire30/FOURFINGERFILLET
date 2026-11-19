@@ -6,7 +6,7 @@ public class ItemMovement : MonoBehaviour
 {
     [SerializeField ]private GameObject CurrentFood;
     private Rigidbody ApBody;
-    public Collider[] ApCollider;
+    public GameObject[] FruitObjects;
     public Vector3 ApTransform;
     public float Apx;
     public float Apz;
@@ -14,6 +14,8 @@ public class ItemMovement : MonoBehaviour
     public float ApRotate;
     public bool CanMove;
     public bool IsSelected;
+    public ScoreCalc Score;
+    Vector3 TempBin;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,6 +24,9 @@ public class ItemMovement : MonoBehaviour
         //ApTransform = new Vector3(Apx, Apy, Apz);
         Apy = 2.5f;
         CanMove = true;
+        Score = GameObject.Find("ScoreObject").GetComponent<ScoreCalc>();
+        FruitObjects = GameObject.FindGameObjectsWithTag("Fruit");
+        TempBin = new Vector3(3.5f, 0.5f, 0f);
     }
 
     // Update is called once per frame
@@ -73,6 +78,11 @@ public class ItemMovement : MonoBehaviour
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.Escape) && CanMove)
+        {
+            StartCoroutine(ResetFood());
+        }
+
         //if (CanPlace) //&& !CannotPlace)
         //{
         //    Debug.Log("C'mon, please work!");
@@ -94,6 +104,12 @@ public class ItemMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             StartCoroutine(SetNull());
+
+            if (CurrentFood.CompareTag("Fruit"))
+            {
+                Score.Fruit += 1f;
+                Score.Variables();
+            }
         }
     }
 
@@ -104,6 +120,8 @@ public class ItemMovement : MonoBehaviour
         CanMove = true;
         ApBody = CurrentFood.GetComponent<Rigidbody>();
         Apy = 2.5f;
+        Apx = 0.5f; //EXP
+        Apz = -0.5f; //EXP
     }
 
     IEnumerator SetNull()
@@ -119,6 +137,23 @@ public class ItemMovement : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         IsSelected = false;
+        //CurrentFood = null;
+    }
+
+    IEnumerator ResetFood()
+    {
+        CanMove = false; //Won't work for multiple objects... need new solution! Maybe tags or Array can help? Need the opposite of a Foreach loop...
+                         //Set Null may just work anyways...
+
+        yield return new WaitForSeconds(0.5f);
+
+        ApBody.constraints = RigidbodyConstraints.FreezeAll;
+
+        yield return new WaitForSeconds(0.5f);
+
+        IsSelected = false;
+
+        CurrentFood.transform.position = TempBin;
         //CurrentFood = null;
     }
 }

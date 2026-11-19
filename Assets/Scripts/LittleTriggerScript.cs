@@ -39,7 +39,12 @@ public class LittleTriggerScript : MonoBehaviour
 
             //Item.CanPlace = true;
         }
-        else if (other.CompareTag("LiamNeeson") && !other.CompareTag("FreeSpace"))
+
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("LiamNeeson") && !other.CompareTag("FreeSpace"))
         {
             Debug.Log("NOT PLACEABLE");
 

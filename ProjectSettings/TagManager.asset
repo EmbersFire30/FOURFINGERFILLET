@@ -6,9 +6,13 @@ TagManager:
   tags:
   - FoodTrigger
   - FreeSpace
-  - Banana
   - LiamNeeson
-  - Chocolate
+  - Fruit
+  - Carbs
+  - Protein
+  - Dairy
+  - SUGAH
+  - Food
   layers:
   - Default
   - TransparentFX
