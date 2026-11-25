@@ -13,6 +13,7 @@ TagManager:
   - Dairy
   - SUGAH
   - Food
+  - TempBin
   layers:
   - Default
   - TransparentFX

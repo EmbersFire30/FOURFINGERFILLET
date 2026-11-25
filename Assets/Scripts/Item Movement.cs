@@ -26,7 +26,7 @@ public class ItemMovement : MonoBehaviour
         CanMove = true;
         Score = GameObject.Find("ScoreObject").GetComponent<ScoreCalc>();
         FruitObjects = GameObject.FindGameObjectsWithTag("Fruit");
-        TempBin = new Vector3(3.5f, 0.5f, 0f);
+        TempBin = new Vector3(8f, 0.5f, -8f);
     }
 
     // Update is called once per frame
